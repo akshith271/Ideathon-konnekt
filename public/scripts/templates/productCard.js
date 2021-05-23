@@ -1,5 +1,5 @@
 export const renderProductCard = (product) => {
-    const { name, category, price, image_url } = product;
+    const { name, category, price, image_url,description,user_name,contact } = product;
     return `<div class="col-md-4 mt-2">
                     <div class="card">
                         <div class="card-body">
@@ -15,9 +15,12 @@ export const renderProductCard = (product) => {
                                     </a>
                             </div>
                             <h3 class="mb-0 font-weight-semibold">Rs ${price}</h3>
+                            <h3 class="mb-0 font-weight-semibold"> Description : ${description}</h3>
+                            <h3 class="mb-0 font-weight-semibold">Seller Details:</h3>
+                            <h3 class="mb-0 font-weight-semibold">Seller Name: ${user_name}</h3>
+                            <h3 class="mb-0 font-weight-semibold">Contact Details: ${contact}</h3>
 
-                            <button type="button" class="btn bg-cart"> View Details
-                            </button>
+                            
                         </div>
                     </div>
                 </div>`;
