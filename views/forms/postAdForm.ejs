@@ -1,0 +1,63 @@
+<form id="postAdForm">
+    <div class="form-group row">
+        <label for="ad_name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" name="name" class="form-control" id="ad_name" placeholder="Product name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="category" class="col-sm-2 col-form-label">Type</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="category" id="category">
+
+                <option>Book</option>
+                <option>Apron</option>
+                <option>Tool</option>
+
+            </select>
+
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <label for="ad_image" class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="ad_image" placeholder="Upload the image">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="ad_price" class="col-sm-2 col-form-label">Your Price</label>
+        <div class="col-sm-10">
+            <input type="text" name="price" class="form-control" id="ad_price" placeholder="Enter in Rupees">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="ad_contact" class="col-sm-2 col-form-label">Your Roll number</label>
+        <div class="col-sm-10">
+            <input type="text" name="user_roll" class="form-control" id="ad_sellerroll" placeholder="Enter your JNTUH roll number">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="ad_contact" class="col-sm-2 col-form-label">Your Name:</label>
+        <div class="col-sm-10">
+            <input type="text" name="user_name" class="form-control" id="ad_sellername" placeholder="Enter your name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="ad_contact" class="col-sm-2 col-form-label">Contact Number</label>
+        <div class="col-sm-10">
+            <input type="tel" name="contact" class="form-control" id="ad_contact" placeholder="+91">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <textarea name="description" id="description" class="form-control"></textarea>
+            <!--            <input type="text" class="form-control" id="inputPassword3" placeholder="Tell something">-->
+        </div>
+    </div>
+    <input type="hidden" name="image_url" id="ad_image_url">
+    <input type="hidden" name="delete_image_url" id="ad_delete_image_url">
+<!--    <button type="button" class="btn btn-primary" id="form-post-btn">Post my Ad!</button>-->
+</form>

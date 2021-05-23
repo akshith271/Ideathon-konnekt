@@ -13,17 +13,24 @@
     "lite-server": "^2.6.1",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.10",
+    "node-sass": "^6.0.0",
+    "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
-    "popper.js": "^1.12.9"
+    "popper.js": "^1.12.9",
+    "scss-compile": "^0.1.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0"
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss-compile": "node-sass -rw styles/scss/ -o styles/css/",
+    "watch": "npm run scss-compile",
+    "json-server": "json-server --watch db.json --port=3001"
   },
   "author": "",
   "license": "ISC",
