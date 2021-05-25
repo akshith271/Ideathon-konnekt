@@ -7,7 +7,7 @@
       "user_roll": "19BD1A051F",
       "user_name": "Akshith",
       "contact": "9347620298",
-      "description": "Second year all in one",
+      "description": "Second year all in one JNTUH Textbook",
       "image_url": "https://i.ibb.co/3CkX944/all-in-one.jpg",
       "delete_image_url": "https://ibb.co/CHWd3mm/ebc6f3990914ea29b253e8b41bc2ff23",
       "id": 1
@@ -31,7 +31,7 @@
       "user_roll": "19BD1A051F",
       "user_name": "Akshith",
       "contact": "9347620298",
-      "description": "It is a drafter",
+      "description": "It is a drafter can be used for engineering graphics",
       "image_url": "https://i.ibb.co/jkKQFx1/drafter.jpg",
       "delete_image_url": "https://ibb.co/qYGcw4P/81632b813dbbb3fb3fbea54f6b6f1fcf",
       "id": 3
@@ -43,10 +43,22 @@
       "user_roll": "19BD1A051F",
       "user_name": "Akshith",
       "contact": "9347620298",
-      "description": "It is a good apron",
+      "description": "It is a good apron used for labs",
       "image_url": "https://i.ibb.co/7bNMB5y/apron.jpg",
       "delete_image_url": "https://ibb.co/qxFqhf1/2ab9e904fcae74472f2a3994be5fc4a2",
       "id": 4
+    },
+    {
+      "name": "Web Technology",
+      "category": "Book",
+      "price": "150",
+      "user_roll": "19BD1A051B",
+      "user_name": "Venkat Ganesh",
+      "contact": "9441371502",
+      "description": "Web Technology 3-1 Textbook",
+      "image_url": "https://i.ibb.co/RvGx8np/book1.jpg",
+      "delete_image_url": "https://ibb.co/SsDhSTX/69da15f7595090ce7615d4624683f16b",
+      "id": 5
     }
   ]
 }

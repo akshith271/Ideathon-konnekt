@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
     <link rel="stylesheet" href="marketplace.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Document</title>
@@ -31,12 +30,12 @@
                             class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link font1 mr-4" href="#">Events</a>
+                <a class="nav-link font1 mr-4" href="/events">Events</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 mr-2">
 
-            <a href="/logout" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</a>
+            <a href="/" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</a>
         </form>
     </div>
 </nav>
@@ -101,7 +100,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="post-ad-submit" class="btn btn-primary">Post my Ad!</button>
+                <button type="button" id="post-ad-submit" class="btn btn-primary" onclick="formValidation()">Post my Ad!</button>
             </div>
         </div>
     </div>
@@ -119,6 +118,5 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script src="/scripts/controllers/marketplaceController.js" type="module"></script>
-
 </body>
 </html>

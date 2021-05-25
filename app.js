@@ -9,15 +9,14 @@ LocalStrategy = require('passport-local');
 passportLocalMongoose = require('passport-local-mongoose');
 User = require('./models/user');
 // Connecting to database
-// mongoose.connect('mongodb://localhost/konnekt');
-// app.use(
-//     require('express-session')({
-//         secret: 'Any normal Word', //decode or encode session
-//         resave: false,
-//         saveUninitialized: false,
-//     })
-// );
-
+ mongoose.connect('mongodb://localhost/ideathon_konnekt');
+ app.use(
+     require('express-session')({
+         secret: 'Any normal Word', //decode or encode session
+         resave: false,
+         saveUninitialized: false,
+     })
+ );
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 //node-sass
@@ -46,6 +45,9 @@ app.use('/marketplace', marketplaceRouter);
 const booksRouter = require('./routes/books');
 app.use('/books', booksRouter);
 
+const eventsRouter = require('./routes/events');
+app.use('/events', eventsRouter);
+
 //Authentication
 passport = require('passport');
 passport.serializeUser(User.serializeUser()); //session encoding
@@ -68,28 +70,21 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
-app.post('/register', (req, res) => {
-    User.register(
-        new User({
-            username: req.body.username,
-            phone: req.body.phone,
-        }),
-        req.body.password,
-        function (err, user) {
-            if (err) {
-                console.log(err);
-                res.render('register');
-            }
-            passport.authenticate('local')(req, res, function () {
-                res.redirect('/');
-            });
+app.post("/register", (req, res) => {
+    User.register(new User ({
+        username: req.body.username,
+        phone: req.body.phone,
+        accesslevel: req.body.accesslevel,
+    }),
+    req.body.password, function(err, user) {
+        if(err) {
+            console.log(err);
+            res.render("register");
         }
-    );
-});
-
-app.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
+        passport.authenticate("local") (req, res, function() {
+            res.redirect("/");
+        })
+    })
 });
 
 function isLoggedIn(req, res, next) {
@@ -98,7 +93,51 @@ function isLoggedIn(req, res, next) {
     }
     res.redirect('/');
 }
+var schema = new mongoose.Schema({
+    event_name : String,
+    event_date : String,
+    registration_end_date : String,
+    registration_link : String,
+    event_status :String,
+  },
+  {
+      collection : 'presentevents'
+  });
+  
+  var pdetailsModel = mongoose.model("pevents", schema);
+  app.get("/events", function (req, res) {   
+  pdetailsModel.find({}, function (err, allpevents) {
+      if (err) {
+          console.log(err);
+      } 
+      else {
+          res.render("events", { pevents: allpevents })
+      }
+  })
+  })
 
+  app.post("/addevents", (req, res) => {
+    const saveEvents = new pdetailsModel({
+        event_name : req.body.eventname,
+        event_date : req.body.date,
+        registration_end_date : req.body.enddate,
+        registration_link : req.body.link,
+        event_status :req.body.status,
+    });
+    saveEvents.save().then(
+        () => {
+            res.redirect("/events");
+        }
+      ).catch(
+        (error) => {
+          res.render("addevents");
+        }
+      );
+  })
+
+  app.get("/addevents", (req, res) =>{
+      res.render("addevents");
+  })
 
 // Listen on Server
 
