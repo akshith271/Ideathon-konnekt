@@ -8,6 +8,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="marketplace.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>Document</title>
 </head>
 <body>
@@ -41,26 +42,25 @@
 </nav>
 
 
-
 <div class="container">
     <div class="row top-nav">
         <div>
             <ul class="nav nav-pills mb-3" id="pills-tab">
                 <li class="nav-item">
-                    <a class="nav-link filter-pill"  data-toggle="pill" id="filter-pill-">All</a>
+                    <a class="nav-link filter-pill" data-toggle="pill" id="filter-pill-">All</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link filter-pill" data-toggle="pill" id="filter-pill-Apron">Aprons</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link filter-pill" data-toggle="pill" id="filter-pill-Book" >Books</a>
+                    <a class="nav-link filter-pill" data-toggle="pill" id="filter-pill-Book">Books</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link filter-pill" data-toggle="pill" id="filter-pill-Tool">Tools</a>
                 </li>
             </ul>
         </div>
-        <div class="search-container" >
+        <div class="search-container">
             <label for="search-input" class="search-label">
                 <input id="search-input" type="search" class="form-control"
                        placeholder="Search books, aprons, tools.."/>
@@ -74,6 +74,20 @@
             <button type="button" id="post-ad-trigger" class="btn btn-warning" data-toggle="modal"
                     data-target="#post-ad-modal">Post your ad
             </button>
+        </div>
+    </div>
+    <div class="row slider-row">
+        <div class="slider-section">
+            <div class="slider-container">
+                <div class="amount-container">
+                    <label for="amount">Price range:</label>
+                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                </div>
+                <div id="slider-range" class="slider">
+
+                </div>
+            </div>
+            <button class="btn btn-slider btn-block" id="price-filter">Apply filter</button>
         </div>
     </div>
     <div class="row products-container">
@@ -100,7 +114,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="post-ad-submit" class="btn btn-primary" onclick="formValidation()">Post my Ad!</button>
+                <button type="button" id="post-ad-submit" class="btn btn-primary" onclick="formValidation()">Post my
+                    Ad!
+                </button>
             </div>
         </div>
     </div>
@@ -117,6 +133,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/scripts/controllers/marketplaceController.js" type="module"></script>
 </body>
 </html>

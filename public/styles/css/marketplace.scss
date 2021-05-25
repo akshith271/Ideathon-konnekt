@@ -17,6 +17,34 @@
     margin: 20px 0;
 }
 
+.slider-row {
+    flex-direction: column;
+
+
+    .slider-section{
+        display: flex;
+        align-items: flex-end;
+        padding-left: 12px;
+        width: 50%;
+
+        .slider-container {
+            width: 100%;
+            .amount-container {
+
+            }
+            .slider{
+                width: 100%;
+            }
+
+        }
+    }
+    .btn-slider{
+        background: rgb(32,32,32);
+        color: white;
+        width: 120px;
+        margin-left: 20px;
+    }
+}
 .products-container {
     .mt-50 {
         margin-top: 50px;

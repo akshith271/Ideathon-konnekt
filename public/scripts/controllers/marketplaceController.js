@@ -1,6 +1,7 @@
 import { productService } from '../services/productService.js';
 import { imageService } from '../services/imageService.js';
 import { renderProductCard } from '../templates/productCard.js';
+import Slider from '../utils/slider.js';
 
 function _renderProducts(products) {
     const output = document.getElementById('output');
@@ -19,10 +20,23 @@ function renderProductsBySearch(name) {
         _renderProducts(products);
     });
 }
+function renderProductsWithPriceRange(min, max) {
+    productService.getAll().then((products) => {
+        const filteredProducts = products.filter(
+            (product) =>
+                parseInt(product.price) > min && parseInt(product.price) < max
+        );
+        _renderProducts(filteredProducts);
+    });
+}
 function renderAllProducts() {
     productService.getAll().then((products) => {
         _renderProducts(products);
     });
+}
+
+function updateSlider(min, max) {
+    $('#amount').val('Rs ' + min + ' - Rs ' + max);
 }
 $(document).ready(function () {
     $('#post-ad-modal').on('shown.bs.modal', function () {
@@ -46,11 +60,27 @@ $(document).ready(function () {
 
     const searchInputEle = document.querySelector('#search-input');
     searchInputEle.addEventListener('change', searchHandler);
-    // searchInputEle.addEventListener('keydown', searchHandler);
 
     document
         .querySelector('#search-button')
         .addEventListener('click', searchHandler);
+    renderAllProducts();
+
+    const priceSlider = new Slider('#slider-range', {
+        min: 0,
+        max: 3500,
+        values: [75, 300],
+    });
+    priceSlider.onSlide(updateSlider);
+    updateSlider(priceSlider.getMin(), priceSlider.getMax());
+
+    document.querySelector('#price-filter').addEventListener('click', (evt) => {
+        renderProductsWithPriceRange(
+            priceSlider.getMin(),
+            priceSlider.getMax()
+        );
+    });
+
     renderAllProducts();
 });
 function imageHandler(event) {

@@ -1,4 +1,3 @@
-import $http from './httpService.js';
 import dbService from './dbService.js';
 
 const BASE_URL = '/products';
@@ -25,6 +24,7 @@ export const productService = {
 
         return dbService.get(`${BASE_URL}?category=${category}`);
     },
+
 
 
 };
