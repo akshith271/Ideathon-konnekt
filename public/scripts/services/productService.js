@@ -16,10 +16,15 @@ export const productService = {
 
     delete: function (id) {},
 
-    find: function (name) {},
+    find: function (name) {
+        // return dbService.get(`${BASE_URL}?name_like=${name}`);
+        return dbService.get(`${BASE_URL}?q=${name}`);
+    },
     getByCategory: function (category) {
         if (!category) return this.getAll();
 
         return dbService.get(`${BASE_URL}?category=${category}`);
     },
+
+
 };

@@ -2,34 +2,56 @@ import { productService } from '../services/productService.js';
 import { imageService } from '../services/imageService.js';
 import { renderProductCard } from '../templates/productCard.js';
 
-$('#post-ad-modal').on('shown.bs.modal', function () {
-    $('#post-ad-trigger').trigger('focus');
-});
-
-function renderProducts(products) {
+function _renderProducts(products) {
     const output = document.getElementById('output');
-    output.innerHTML="";
+    output.innerHTML = '';
     products.forEach((item) => {
         output.innerHTML += renderProductCard(item);
     });
 }
-function renderProductsByCategory(category){
-   productService.getByCategory(category).then(products => {
-       renderProducts(products);
-   });
+function renderProductsByCategory(category) {
+    productService.getByCategory(category).then((products) => {
+        _renderProducts(products);
+    });
 }
-document.querySelector('#post-ad-submit').addEventListener('click', postAd);
-document.querySelector('#ad_image').addEventListener('change', imageHandler);
+function renderProductsBySearch(name) {
+    productService.find(name).then((products) => {
+        _renderProducts(products);
+    });
+}
+function renderAllProducts() {
+    productService.getAll().then((products) => {
+        _renderProducts(products);
+    });
+}
 $(document).ready(function () {
-    document.querySelectorAll(".filter-pill").forEach(ele => {
-        const category = ele.id.split("filter-pill-")[1];
-        ele.addEventListener("click", event => renderProductsByCategory(category))
+    $('#post-ad-modal').on('shown.bs.modal', function () {
+        $('#post-ad-trigger').trigger('focus');
     });
-    productService.getAll().then(products =>  {
-    
-        renderProducts(products);
+
+    document.querySelector('#post-ad-submit').addEventListener('click', postAd);
+    document
+        .querySelector('#ad_image')
+        .addEventListener('change', imageHandler);
+
+    document.querySelectorAll('.filter-pill').forEach((ele) => {
+        const category = ele.id.split('filter-pill-')[1];
+        ele.addEventListener('click', (event) =>
+            renderProductsByCategory(category)
+        );
     });
-    
+    const searchHandler = (event) => {
+        renderProductsBySearch(searchInputEle.value);
+    };
+
+    const searchInputEle = document.querySelector('#search-input');
+    searchInputEle.addEventListener('change', searchHandler);
+    // searchInputEle.addEventListener('keydown', searchHandler);
+
+    document
+        .querySelector('#search-button')
+        .addEventListener('click', searchHandler);
+    renderAllProducts();
 });
 function imageHandler(event) {
     const file = event.target.files[0];
@@ -58,7 +80,7 @@ function postAd() {
         product[current.value[0]] = current.value[1];
         current = itr.next();
     }
-    debugger;
+
     //TODO: Add user details to product object
 
     productService.add(product);
